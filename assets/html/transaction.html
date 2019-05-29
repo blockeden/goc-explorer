@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>交易信息</title>
+    <link rel="shortcut icon" href="https://explorer.eoseco.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #333;
+            color: #fff;
+        }
+        
+        .header_box {
+            padding: 0 15px;
+            width: 100%;
+            height: 56px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            color: #0FE0B7;
+            border-bottom: 1px solid #999;
+        }
+        
+        .header_img {
+            width: 43px;
+            height: 43px;
+            margin-right: 13px;
+        }
+        
+        .header_info {
+            padding: 0 15px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            font-size: 14px;
+            line-height: 30px;
+        }
+        
+        .header_info a {
+            margin-left: 10px;
+            color: #0FE0B7;
+        }
+        
+        .footer_link {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            background: #555;
+            color: #fff;
+            font-size: 14px;
+            line-height: 50px;
+            position: fixed;
+            bottom: 0;
+            z-index: 99999;
+            border-top: 1px solid #999;
+        }
+        
+        .footer_link a {
+            color: #0FE0B7;
+        }
+        
+        .row {
+            margin: 0 !important;
+        }
+        
+        .tr_td_one,
+        .tr_td_two {
+            white-space: nowrap
+        }
+        
+        .panel-heading {
+            padding-left: 15px;
+            box-sizing: border-box;
+            font-size: 18px;
+            height: 50px;
+            line-height: 50px;
+            background: #555;
+        }
+        
+        .panel-body {
+            padding: 15px;
+        }
+        
+        .table>tbody>tr>td,
+        .table>tbody>tr>th,
+        .table>tfoot>tr>td,
+        .table>tfoot>tr>th,
+        .table>thead>tr>td,
+        .table>thead>tr>th {
+            border-top: none !important;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="header_box" style="margin-bottom: 20px">
+        <img class="header_img" src="https://explorer.eoseco.com/assets/logo.jpg" alt="">
+        <span>EOSeco Explorer</span>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">交易</div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td class="tr_td_one">待确认</td>
+                                    <td class="tr_td_two pending"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tr_td_one">交易ID</td>
+                                    <td class="tr_td_two transaction_id">c1ea024d631a7c7f18db8e6c08475d09414dbb8e0a23499b5c2f611fed7dd5da</td>
+                                </tr>
+                                <tr>
+                                    <td class="tr_td_one">区块</td>
+                                    <td class="tr_td_two block_num">eosio.token</td>
+                                </tr>
+                                <tr>
+                                    <td class="tr_td_one">创建时间</td>
+                                    <td class="tr_td_two timestamp">aaa</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">合约</div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped actions">
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header_info">
+        更多信息关注浏览器:<a href="https://explorer.eoseco.com/">https://explorer.eoseco.com/</a></p>
+    </div>
+    <div class="footer_link">
+        <span>联系我们 : </span>
+        <a href="mailto:support@eoseco.net">support@eoseco.net</a>
+    </div>
+</body>
+
+<script>
+    var transaction_id = location.href.split("=")[1];
+    $.ajax({
+        type: "get",
+        url: "https://explorer.eoseco.com/api/transaction/" + transaction_id,
+        success: function(res) {
+            var data = res;
+            var actions = data.trx.transaction.actions;
+            var arr = [];
+            actions.forEach(action => {
+                action.rawData = JSON.stringify(action.data);
+                action.authorization.forEach(item => {
+                    arr.push(item.actor + "@" + item.permission);
+                });
+                action.authorizers = JSON.stringify(arr);
+
+            });
+            var html = "";
+            console.log(actions)
+            $(".pending").html(data.pending == false ? "否" : "是");
+            $(".transaction_id").html(data._id);
+            $(".block_num").html(data.block_num);
+            $(".timestamp").html(data.timestamp);
+            for (let i = 0; i < actions.length; i++) {
+                html += "<tr>" +
+                    "<td class='tr_td_one'>合约</td>" +
+                    "<td class='tr_td_two contract'>" + actions[i].account + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td class='tr_td_one'>动作</td>" +
+                    "<td class='tr_td_two action'>" + actions[i].name + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td class='tr_td_one'>授权人</td>" +
+                    "<td class='tr_td_two authorizers'>" + actions[i].authorizers + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td class='tr_td_one'>数据</td>" +
+                    "<td class='tr_td_two rawData '>" + actions[i].rawData + "</td>" +
+                    "</tr>"
+            }
+            $(".actions").append(html);
+        }
+    });
+</script>
+
+</html>
