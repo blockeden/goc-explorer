@@ -150,7 +150,7 @@
     "FoMarket": "Fo Market",
     "FONotes": "Note: Since the total amount of FO issued is ten times that of EOS, the initial value of the current price is 10 times that of EOS ",
     "FONoteSign": "equivalent to",
-    "CreateAccountDesc": "You can use Ironman to generate key pair.",
+    "CreateAccountDesc": "Click tool to generate key pair",
     "TransferFlagDesc": "If checked, the stake belongs to receiver account. If unchecked, the stake belongs to yourself.",
     "NewAccountDesc": "Account Name (12 characters using a-z and 1-5 only)",
     "PublicKeyDesc": "String begins with ",
@@ -176,7 +176,7 @@
     "WrongPublicKeyFormat": "Wrong Public Key Format",
     "Cpu/NetBothEmpty": "Cpu/Net Both Empty",
     "Completion": "Completion",
-    "VoteByIronman": "Vote by Ironman plugin",
+    "VoteByIronman": "Vote by Plugin",
     "VotingRecommend": "This Explorer is developed by :",
     "ClaimForVote": "Claim For Vote",
     "Claim": "Claim",
@@ -188,5 +188,13 @@
     "RefreshVote": "Refresh Vote",
     "VoteFor": "Vote for",
     "RamExchange": "Ram Exchange",
-    "NameAuction": "Name Auction"
+    "NameAuction": "Name Auction",
+    "LockedBalance": "Locked Balance",
+    "UnlockedBlance": "Unlocked Blance",
+    "LoginPlugin": "Login Plugin",
+    "VoteByPlugin": "Vote By Plugin",
+    "VoteProxy": "Vote Proxy",
+    "ProxyDesc": "You can only choose one proxy",
+    "ClaimForUnlockFO": "Claim For Unlock FO",
+    "UnlockFoDesc":"Claim for unlock FO in one time"
 }
