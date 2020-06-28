@@ -196,5 +196,14 @@
     "VoteProxy": "Vote Proxy",
     "ProxyDesc": "You can only choose one proxy",
     "ClaimForUnlockFO": "Claim For Unlock FO",
-    "UnlockFoDesc":"Claim for unlock FO in one time"
+    "UnlockFoDesc": "Claim for unlock FO in one time",
+    "VoteProxyDesc": "Buy Rex need to vote by proxy or vote at least 21 bps",
+    "SellRexDesc": "You need to wait 4 days to sell rex after buying",
+    "StakeToRexDesc":"Change Stake to REX do not need wait 3 days to unstake. But after changeing to rex, you need wait 4 days to sell REX. Do not unstake all of yourself, leave some resource to push transaction.",
+    "VoteRewardDesc": "Vote Mining need you to vote for proxy yasplusproxy or node plusplusplus, you can claim once a day, if you against the rules, you can not claim in 3days",
+    "SwapDesc": "Swap use Uniswap Model, single transaction amount can not exceed 10% of the liquid pool",
+    "LiquidityDesc": "Add Liquidity to pool is a high-risk and difficult behavior. Please do not use it for general users. If you want to use it, please fully understand uniswap and understand the contract risks.",
+    "YasRexAirdropDesc":"REX airdrop base on REX you buy, claim once every 24hrs",
+    "NeedCreateAccountDesc":"You need to create account use the publick key"
+
 }
