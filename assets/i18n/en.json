@@ -204,6 +204,6 @@
     "SwapDesc": "Swap use Uniswap Model, single transaction amount can not exceed 10% of the liquid pool",
     "LiquidityDesc": "Add Liquidity to pool is a high-risk and difficult behavior. Please do not use it for general users. If you want to use it, please fully understand uniswap and understand the contract risks.",
     "YasRexAirdropDesc":"REX airdrop base on REX you buy, claim once every 24hrs",
-    "NeedCreateAccountDesc":"You need to create account use the publick key"
+    "NeedCreateAccountDesc":"Can not get account by public key, please input account"
 
 }
